@@ -42,14 +42,11 @@ resource "azurerm_app_service" "app" {
   }
 }
 
-resource "azurerm_static_site" "static_frontend" {
-  name                = "myStaticFrontend"
+resource "azurerm_static_site" "example" {
+  name                = "example-static-site"
   resource_group_name = azurerm_resource_group.rg.name
   location            = azurerm_resource_group.rg.location
-  sku_tier            = "Free"  # Puoi anche scegliere "Standard"
+  sku_tier            = "Free"
 
-  repository_url      = "https://github.com/toms1/my-frontend-repo"  # repo git del frontend
-  branch              = "main"                                      # branch da cui fare deploy
-  app_location        = "/"                                         # cartella con codice frontend (es: "/app" o "/" se root)
-  output_location     = "build"                                     # cartella build con file statici (es: "build" o "dist")
+  # repository_url, branch, app_location, output_location non sono supportati da questo provider/versione
 }
