@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Cloud Portfolio - Tommaso</title>
-  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
   <div class="container">
@@ -18,9 +18,32 @@
       <li>🔄 CI/CD: Pipeline di deploy con App Service</li>
       <li>🔒 Sicurezza e networking: configurazione base</li>
       <li>📈 Monitoring: endpoint <code>/health</code> disponibile</li>
+      <li>👁️ Visite: <strong><span id="counter">Caricamento...</span></strong></li>
     </ul>
 
-    <p><a href="/health" target="_blank">Visualizza /health</a></p>
+    <p><a id="health-link" href="#" target="_blank">Visualizza /health</a></p>
   </div>
+
+
+
+<script>
+  const BACKEND_URL = "https://app-healthcheck-demo.azurewebsites.net";
+
+  fetch(`${BACKEND_URL}/counter`)
+    .then(response => response.json())
+    .then(data => {
+      document.getElementById("counter").textContent = data.count;
+    })
+    .catch(err => {
+      document.getElementById("counter").textContent = "errore";
+      console.error("Errore nel contatore:", err);
+    });
+
+  // Imposta link /health
+  document.getElementById("health-link").href = `${BACKEND_URL}/health`;
+</script>
+
+
+
 </body>
 </html>

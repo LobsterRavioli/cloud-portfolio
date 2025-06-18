@@ -1,6 +1,18 @@
 from flask import Flask, jsonify
+from flask_cors import CORS
 
 app = Flask(__name__)
+
+
+CORS(app)  # per permettere richieste da un dominio frontend diverso
+
+counter = 0
+
+@app.route("/counter")
+def count():
+    global counter
+    counter += 1
+    return jsonify(count=counter), 200
 
 @app.route("/health")
 def health():
