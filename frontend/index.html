@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cloud Portfolio - Tommaso</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
+</head>
+<body>
+  <div class="container">
+    <h1>🌥️ Cloud Portfolio - Tommaso Sorrentino</h1>
+    <p>Questa è la mia pagina personale per mostrare le competenze in ambito cloud e DevOps.</p>
+
+    <ul>
+      <li>☁️ Cloud: Azure (main), conoscenze base su AWS e Oracle Cloud</li>
+      <li>🛠️ IaC: Terraform</li>
+      <li>🐳 Container: Docker</li>
+      <li>🔄 CI/CD: Pipeline di deploy con App Service</li>
+      <li>🔒 Sicurezza e networking: configurazione base</li>
+      <li>📈 Monitoring: endpoint <code>/health</code> disponibile</li>
+    </ul>
+
+    <p><a href="/health" target="_blank">Visualizza /health</a></p>
+  </div>
+</body>
+</html>
