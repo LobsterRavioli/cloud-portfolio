@@ -39,6 +39,8 @@ resource "azurerm_app_service" "app" {
   app_settings = {
     WEBSITES_ENABLE_APP_SERVICE_STORAGE = "false"
     DOCKER_REGISTRY_SERVER_URL         = "https://index.docker.io"
+    COSMOS_URI = azurerm_cosmosdb_account.cosmos_account.endpoint
+    COSMOS_KEY = azurerm_cosmosdb_account.cosmos_account.primary_key
   }
 }
 
@@ -49,4 +51,48 @@ resource "azurerm_static_site" "example" {
   sku_tier            = "Free"
 
   # repository_url, branch, app_location, output_location non sono supportati da questo provider/versione
+}
+
+
+resource "azurerm_cosmosdb_account" "cosmos_account" {
+  name                = "cosmos-account99"
+  location            = "Italy North"
+  resource_group_name = azurerm_resource_group.rg.name
+  offer_type          = "Standard"
+  kind                = "GlobalDocumentDB"
+
+  consistency_policy {
+    consistency_level       = "Session"
+  }
+
+  geo_location {
+    location          = "Italy North"
+    failover_priority = 0
+  }
+
+  capabilities {
+    name = "EnableServerless" # opzionale: puoi rimuoverlo per provisioned throughput
+  }
+
+
+}
+
+resource "azurerm_cosmosdb_sql_database" "cosmos_db" {
+  name                = "azure-sql-db"
+  resource_group_name = azurerm_resource_group.rg.name
+  account_name        = azurerm_cosmosdb_account.cosmos_account.name  
+}
+
+resource "azurerm_cosmosdb_sql_container" "visite_container" {
+  name                  = "visite"
+  resource_group_name   = azurerm_resource_group.rg.name
+  account_name          = azurerm_cosmosdb_account.cosmos_account.name
+  database_name         = azurerm_cosmosdb_sql_database.cosmos_db.name
+  partition_key_paths = ["/id"]      
+
+  # throughput            = 400  # puoi omettere questo se usi "EnableServerless"
+
+  indexing_policy {
+    indexing_mode = "consistent"
+  }
 }

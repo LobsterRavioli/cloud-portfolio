@@ -1,18 +1,41 @@
 from flask import Flask, jsonify
 from flask_cors import CORS
+from azure.cosmos import CosmosClient, PartitionKey, exceptions
+import os
 
 app = Flask(__name__)
+CORS(app)
 
+# Connessione a Cosmos DB
+COSMOS_URI = os.environ.get("COSMOS_URI")
+COSMOS_KEY = os.environ.get("COSMOS_KEY")
+DATABASE_NAME = "azure-sql-db"
+CONTAINER_NAME = "visite"
+PARTITION_KEY = "/id"
 
-CORS(app)  # per permettere richieste da un dominio frontend diverso
+client = CosmosClient(COSMOS_URI, credential=COSMOS_KEY)
+db = client.create_database_if_not_exists(DATABASE_NAME)
+container = db.create_container_if_not_exists(
+    id=CONTAINER_NAME,
+    partition_key=PartitionKey(path=PARTITION_KEY)
+)
 
-counter = 0
+# Inizializza il documento contatore (una volta sola)
+def init_counter():
+    try:
+        container.read_item(item="main", partition_key="main")
+    except exceptions.CosmosResourceNotFoundError:
+        container.create_item({"id": "main", "count": 0})
+
+init_counter()
 
 @app.route("/counter")
 def count():
-    global counter
-    counter += 1
-    return jsonify(count=counter), 200
+    item = container.read_item(item="main", partition_key="main")
+    item["count"] += 1
+    container.replace_item(item="main", body=item)
+
+    return jsonify(count=item["count"]), 200
 
 @app.route("/health")
 def health():

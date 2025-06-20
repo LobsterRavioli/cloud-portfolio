@@ -1,3 +1,9 @@
 terraform/terraform.tfvars
 terraform/.terraform/
 terraform/.terraform.lock.hcl
+backend/venv
+
+terraform/.env
+terraform/*.tfstate
+terraform/*.tfstate.backup
+backend/*.tfstate

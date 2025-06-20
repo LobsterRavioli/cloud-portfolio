@@ -43,3 +43,9 @@ variable "app_service_name" {
   type        = string
   description = "Nome dell'App Service (l'applicazione web in esecuzione)"
 }
+
+
+variable "environment" {
+  description = "Ambiente di deploy (es. dev, prod)"
+  default     = "dev"
+}
