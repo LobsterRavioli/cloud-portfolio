@@ -16,7 +16,7 @@ This project is a **personal portfolio** that demonstrates modern web developmen
 ### Components
 
 - **Frontend**
-  - Static site built with [your framework, e.g., React, Vue, etc.]
+  - Static site built with vanilla CSS and HTML
   - Deployed via **Azure Static Web Apps**
   - Integrated with CI/CD (GitHub Actions)
 
