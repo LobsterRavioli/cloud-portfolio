@@ -33,7 +33,7 @@ init_counter()
 def count():
     item = container.read_item(item="main", partition_key="main")
     item["count"] += 1
-    print(f"Visite aggiornate: {item['count']}")  # QUESTO verrà mostrato nei log
+    print(f"Visite aggiornate: {item['count']}", file=sys.stdout, flush=True)
     container.replace_item(item="main", body=item)
 
     return jsonify(count=item["count"]), 200
