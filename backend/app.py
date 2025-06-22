@@ -9,7 +9,7 @@ CORS(app)
 # Connessione a Cosmos DB
 COSMOS_URI = os.environ.get("COSMOS_URI")
 COSMOS_KEY = os.environ.get("COSMOS_KEY")
-DATABASE_NAME = "azure-sql-db"
+DATABASE_NAME = "visite-db"
 CONTAINER_NAME = "visite"
 PARTITION_KEY = "/id"
 
@@ -33,9 +33,7 @@ init_counter()
 def count():
     item = container.read_item(item="main", partition_key="main")
     item["count"] += 1
-    print(f"Visite aggiornate: {item['count']}", file=sys.stdout, flush=True)
     container.replace_item(item="main", body=item)
-
     return jsonify(count=item["count"]), 200
 
 @app.route("/health")
