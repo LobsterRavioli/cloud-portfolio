@@ -1,4 +1,4 @@
-from flask import Flask, jsonify, Response
+from flask import Flask, jsonify, Response, request
 from flask_cors import CORS
 from azure.cosmos import CosmosClient, PartitionKey, exceptions
 # Import prometheus client
@@ -46,6 +46,15 @@ def count():
 @app.route("/health")
 def health():
     return jsonify(status="ok"), 200
+
+REQUEST_COUNT = Counter(
+    'flask_app_requests_total', 'Total HTTP requests',
+    ['method', 'endpoint']
+)
+
+@app.before_request
+def before_request():
+    REQUEST_COUNT.labels(method=request.method, endpoint=request.path).inc()
 
 @app.route("/metrics")
 def metrics():
