@@ -1,4 +1,4 @@
-from flask import Flask, jsonify
+from flask import Flask, jsonify, Response
 from flask_cors import CORS
 from azure.cosmos import CosmosClient, PartitionKey, exceptions
 # Import prometheus client
