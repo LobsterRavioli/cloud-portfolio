@@ -1,10 +1,17 @@
 from flask import Flask, jsonify
 from flask_cors import CORS
 from azure.cosmos import CosmosClient, PartitionKey, exceptions
+# Import prometheus client
+from prometheus_client import Counter, generate_latest, CONTENT_TYPE_LATEST
+
 import os
 
 app = Flask(__name__)
 CORS(app)
+
+
+# Prometheus metrics
+REQUEST_COUNT = Counter('flask_app_requests_total', 'Total HTTP requests')
 
 # Connessione a Cosmos DB
 COSMOS_URI = os.environ.get("COSMOS_URI")
@@ -39,6 +46,12 @@ def count():
 @app.route("/health")
 def health():
     return jsonify(status="ok"), 200
+
+@app.route("/metrics")
+def metrics():
+    # Espone le metriche Prometheus
+    return Response(generate_latest(), mimetype=CONTENT_TYPE_LATEST)
+
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=80)
