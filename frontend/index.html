@@ -2,29 +2,111 @@
 <html lang="it">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Cloud Portfolio - Tommaso</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Portfolio - Tommaso Sorrentino</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
   <div class="container">
-    <h1>🌥️ Cloud Portfolio - Tommaso Sorrentino</h1>
-    <p>Questa è la mia pagina personale per mostrare le competenze in ambito cloud e DevOps.</p>
+    <header>
+      <h1>Tommaso Sorrentino</h1>
+      <p><strong>Residenza:</strong> Via Antonio Boccia 35, Poggiomarino, Napoli 80040, Italia</p>
+      <p><strong>Contatti:</strong> +39 331 459 1564 | <a href="mailto:tommasosorrentino58@gmail.com">tommasosorrentino58@gmail.com</a> | 
+         <a href="https://lobsterravioli.github.io" target="_blank" rel="noopener noreferrer">Portfolio</a> | 
+         <a href="https://linkedin.com/in/tommaso-sorrentino99" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+      </p>
+    </header>
 
-    <ul>
-      <li>☁️ Cloud: Azure (main), conoscenze base su AWS e Oracle Cloud</li>
-      <li>🛠️ IaC: Terraform</li>
-      <li>🐳 Container: Docker</li>
-      <li>🔄 CI/CD: Pipeline di deploy con App Service</li>
-      <li>🔒 Sicurezza e networking: configurazione base</li>
-      <li>📈 Monitoring: endpoint <code>/health</code> disponibile</li>
-      <li>👁️ Visite: <strong><span id="counter">Caricamento...</span></strong></li>
-    </ul>
+    <section>
+      <h2>Competenze Tecniche</h2>
+      <ul>
+        <li><strong>Linguaggi:</strong> UML, Java, Python, C, HTML/CSS, JavaScript, MySQL/SQL</li>
+        <li><strong>Strumenti di sviluppo:</strong> VS Code, Eclipse, NetBeans, IntelliJ, DataGrip, Android Studio, Visual Paradigm</li>
+        <li><strong>Tecnologie e Framework:</strong> Linux, GitHub, JUnit, Java Enterprise, JavaFX</li>
+        <li><strong>Strumenti d’ufficio:</strong> Google Docs, PowerPoint, Word</li>
+      </ul>
+    </section>
 
-    <p><a id="health-link" href="#" target="_blank">Visualizza /health</a></p>
+    <section>
+      <h2>Soft Skills</h2>
+      <ul>
+        <li>Problem Solving</li>
+        <li>Comunicazione e Presentazione</li>
+        <li>Flessibilità e Adattamento</li>
+        <li>Resistenza allo Stress</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Progetti Personali</h2>
+
+      <article>
+        <h3>VMetrics: Monitoraggio distribuito su Azure</h3>
+        <p><em>Prometheus, Grafana, Azure, Linux, Networking, Bash</em></p>
+        <ul>
+          <li>Architettura di monitoraggio distribuita a 3 nodi su Azure per tracciare metriche da applicazioni e sistemi.</li>
+          <li>Deploy e configurazione di Prometheus per scraping metriche da endpoint /metrics.</li>
+          <li>Installazione e setup di Grafana su VM dedicata con dashboard interattive.</li>
+          <li>Gestione sicurezza tramite NSG, autenticazione HTTP, e accessi SSH limitati.</li>
+        </ul>
+      </article>
+
+      <article>
+        <h3>Cloud Portfolio (Flask + Azure)</h3>
+        <p><em>Flask, Azure, Docker, Cosmos DB, Terraform, GitHub Actions</em></p>
+        <ul>
+          <li>Portfolio cloud-native con backend Flask containerizzato e frontend statico distribuito.</li>
+          <li>Deploy su Azure App Service con Docker multi-arch, integrato con Cosmos DB per tracciamento visite.</li>
+          <li>Distribuzione frontend con Azure Static Web Apps e pipeline CI/CD tramite GitHub Actions.</li>
+          <li>Provisioning infrastruttura (App Service, Cosmos DB, Static Web App) tramite Terraform.</li>
+        </ul>
+      </article>
+
+      <article>
+        <h3>Toy3 Compiler</h3>
+        <p><em>Java, JFlex, JavaCup, Maven, GitLab CI/CD</em></p>
+        <ul>
+          <li>Compilatore completo per linguaggio Toy3, genera codice C compilabile con GCC/Clang.</li>
+          <li>Usati JFlex per analisi lessicale, JavaCup per sintattica, Visitor Pattern per analisi semantica e generazione codice.</li>
+          <li>Pipeline CI/CD con GitLab per build e test automatizzati.</li>
+        </ul>
+      </article>
+
+      <article>
+        <h3>Steam Review Analysis</h3>
+        <p><em>Python, Pandas, Matplotlib, NLTK, scikit-learn, VADER</em></p>
+        <ul>
+          <li>Analisi sentiment e topic modeling delle recensioni videogiochi su Steam.</li>
+          <li>Automazione raccolta dati, analisi emozioni, visualizzazioni con Matplotlib.</li>
+        </ul>
+      </article>
+    </section>
+
+    <section>
+      <h2>Formazione e Certificazioni</h2>
+      <ul>
+        <li><strong>Università degli Studi di Salerno</strong> — Laurea Triennale in Informatica, 101/110 (Feb. 2024)</li>
+        <li>Corsi caratterizzanti: Ingegneria del Software, Programmazione Avanzata e Distribuita, Tecnologie Web, Intelligenza Artificiale, Basi di Dati, Matematica Discreta</li>
+        <li><strong>LPIC-101</strong> — Linux System Administration, DevOps, Bash</li>
+        <li><strong>Docker for the Absolute Beginner – Hands On – DevOps</strong> — Docker (Udemy)</li>
+        <li><strong>RH104 - Red Hat Training</strong> — Linux System Administration, Bash, DevOps (Udemy, Nov. 2024)</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Lingue</h2>
+      <ul>
+        <li>Italiano: Madrelingua</li>
+        <li>Inglese: Livello B2</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Visite al Portfolio</h2>
+      <p>Visite tracciate tramite Cosmos DB: <strong><span id="counter">Caricamento...</span></strong></p>
+      <p><a id="health-link" href="#" target="_blank" rel="noopener noreferrer">Visualizza stato /health</a></p>
+    </section>
   </div>
-
-
 
 <script>
   const BACKEND_URL = "https://app-healthcheck-demo.azurewebsites.net";
@@ -36,14 +118,10 @@
     })
     .catch(err => {
       document.getElementById("counter").textContent = "errore";
-      console.error("Errore nel contatore:", err);
+      console.error("Errore nel recupero del contatore:", err);
     });
 
-  // Imposta link /health
   document.getElementById("health-link").href = `${BACKEND_URL}/health`;
 </script>
-
-
-
 </body>
 </html>
