@@ -33,7 +33,6 @@ This project is a **personal portfolio** that demonstrates modern web developmen
 - `/health`: Health check endpoint for monitoring
 - Infrastructure provisioned via **Terraform**
 - CI/CD pipelines for both frontend and backend
-- Works seamlessly on **ARM architecture (Apple Silicon)** via multi-platform builds
 
 ---
 
