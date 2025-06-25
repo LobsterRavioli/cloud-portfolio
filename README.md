@@ -6,12 +6,7 @@ This project is a **personal portfolio** that demonstrates modern web developmen
 
 ## 🧱 Architecture Overview
 
-```
-[User] --> [Static Web App (Frontend)]
-           |
-           v
-[Azure App Service (Flask Backend)] --> [Cosmos DB]
-```
+![Portfolio architecture](assets/portfolio_architecture.png)
 
 ### Components
 
