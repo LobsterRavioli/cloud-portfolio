@@ -146,7 +146,7 @@ This project is open-source and available under the [MIT License](LICENSE).
 ## 👤 Author
 
 **Tommaso Sorrentino**  
-[LinkedIn](https://linkedin.com/in/tommaso-sorrentino) · [Email](mailto:t.sorrentino14@studenti.unisa.it)
+[LinkedIn](https://linkedin.com/in/tommaso-sorrentino) · [Email](mailto:tommasosorrentino58@gmail.com)
 
 ---
 
